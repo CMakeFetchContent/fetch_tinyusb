@@ -1,5 +1,5 @@
 # This Cmake will be injected into the root folder of FetchContent for https://packs.download.microchip.com/Microchip.SAMD51_DFP.3.4.91.atpack
-cmake_minimum_required (VERSION 3.18)
+cmake_minimum_required(VERSION 3.18)
 
 project( tinyusb LANGUAGES  C ASM)
 
