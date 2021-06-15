@@ -42,6 +42,6 @@ target_sources( tinyusb
 
 target_link_libraries( tinyusb
     PUBLIC
-        samd51::csp
+        microchip::samd51::csp
         arm::cmsis_5
 )
