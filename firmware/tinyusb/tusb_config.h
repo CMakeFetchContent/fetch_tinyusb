@@ -54,7 +54,7 @@ extern "C" {
 #define CFG_TUD_ENDOINT0_SIZE       64
 
 //------------- CLASS -------------//
-#define CFG_TUD_DFU_RT              1
+#define CFG_TUD_DFU_RUNTIME          1
 
 #ifdef __cplusplus
 }
