@@ -19,7 +19,7 @@ target_compile_definitions(tinyusb
 
 target_compile_options(tinyusb
     PRIVATE 
-        $<$<CXX_COMPILER_ID:GNU>:-O3>
+        $<$<CXX_COMPILER_ID:GNU>:-O0>
 )
 
 target_include_directories( tinyusb
@@ -36,13 +36,25 @@ endif()
 target_sources( tinyusb 
     PRIVATE
         "${CMAKE_CURRENT_LIST_DIR}/tusb_config.h"
-        "src/class/dfu/dfu_rt_device.c"
-        "src/class/cdc/cdc_device.c"
-        "src/common/tusb_fifo.c"
-        "src/device/usbd.c"
-        "src/device/usbd_control.c"
+        
+	    "src/tusb.c"
+	    "src/common/tusb_fifo.c"
+	    "src/device/usbd.c"
+	    "src/device/usbd_control.c"
+	    "src/class/audio/audio_device.c"
+	    "src/class/cdc/cdc_device.c"
+	    "src/class/dfu/dfu_device.c"
+	    "src/class/dfu/dfu_rt_device.c"
+	    "src/class/hid/hid_device.c"
+	    "src/class/midi/midi_device.c"
+	    "src/class/msc/msc_device.c"
+	    "src/class/net/net_device.c"
+	    "src/class/usbtmc/usbtmc_device.c"
+	    "src/class/vendor/vendor_device.c"
+
+        # Device specific
+        # TODO: Portability!
         "src/portable/microchip/samd/dcd_samd.c"
-        "src/tusb.c"
 )
 
 target_link_libraries( tinyusb
