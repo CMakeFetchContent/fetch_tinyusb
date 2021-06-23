@@ -7,7 +7,6 @@ add_library(tinyusb)
 set_target_properties( tinyusb PROPERTIES
     C_STANDARD 11
 )
-
 # @todo TinyUSB is using some older defined names for USB interupts?
 target_compile_definitions(tinyusb
     PUBLIC
@@ -15,6 +14,12 @@ target_compile_definitions(tinyusb
         USB_1_IRQn=USB_SOF_HSOF_IRQn
         USB_2_IRQn=USB_TRCPT0_IRQn
         USB_3_IRQn=USB_TRCPT1_IRQn
+        CFG_TUSB_MCU=OPT_MCU_SAMD51 # TODO: Make this configurable from teh MCU selection of linked in Chip-Support-Package 9csp) ?
+)
+
+target_compile_options(tinyusb
+    PRIVATE 
+        $<$<CXX_COMPILER_ID:GNU>:-O3>
 )
 
 target_include_directories( tinyusb
@@ -27,12 +32,12 @@ if( NOT ${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU" )
     message( WARNING "NOT GNU Compiler ${CMAKE_CXX_COMPILER_ID}")
 endif()
 
-
 # TODO: POrtabilityy!
 target_sources( tinyusb 
-    PUBLIC
+    PRIVATE
+        "${CMAKE_CURRENT_LIST_DIR}/tusb_config.h"
         "src/class/dfu/dfu_rt_device.c"
-       # "src/class/cdc/cdc_device.c"
+        "src/class/cdc/cdc_device.c"
         "src/common/tusb_fifo.c"
         "src/device/usbd.c"
         "src/device/usbd_control.c"
