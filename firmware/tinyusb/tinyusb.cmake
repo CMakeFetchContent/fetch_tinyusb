@@ -10,6 +10,8 @@ set_target_properties( tinyusb PROPERTIES
 # @todo TinyUSB is using some older defined names for USB interupts?
 target_compile_definitions(tinyusb
     PUBLIC
+        # CFG_TUSB_DEBUG=3 #< 3= info, 2 = warning
+        # LOGGER=swo
         USB_0_IRQn=USB_OTHER_IRQn
         USB_1_IRQn=USB_SOF_HSOF_IRQn
         USB_2_IRQn=USB_TRCPT0_IRQn
