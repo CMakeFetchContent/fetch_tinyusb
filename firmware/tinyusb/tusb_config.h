@@ -72,7 +72,7 @@
 //------------- CLASS -------------//
 
 #define CFG_TUD_DFU_RUNTIME 1
-#define CFG_TUD_CDC 1
+#define CFG_TUD_CDC 0
 
 // CDC FIFO size of TX and RX
 #define CFG_TUD_CDC_RX_BUFSIZE   (TUD_OPT_HIGH_SPEED ? 512 : 64)
