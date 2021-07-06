@@ -26,8 +26,7 @@ FetchContent_Declare(
     GIT_TAG ${TinyUsbVersion}
     GIT_SHALLOW TRUE 
     GIT_PROGRESS TRUE
-# TODO: POrtabilityy!
- # GIT_SUBMODULES  "hw/mcu/microchip"
+    GIT_SUBMODULES  "hw/mcu/microchip"
 )
 
 set(FETCHCONTENT_QUIET FALSE)
