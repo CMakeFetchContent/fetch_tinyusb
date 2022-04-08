@@ -9,7 +9,7 @@ endif()
 # Options
 # --------
 # Note: 0.9.0 doens't work with the current TinyUSB due to define of USB_0_IRQn changed?
-set( TinyUsbVersion    "0.10.1" CACHE STRING "ARM CMSIS library version")
+set( TinyUsbVersion "0.13.0" CACHE STRING "TinyUSB library version")
 
 set_property(CACHE TinyUsbVersion PROPERTY STRINGS 
     0.10.1
