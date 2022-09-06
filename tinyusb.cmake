@@ -21,7 +21,8 @@ target_compile_definitions(tinyusb
 
 target_compile_options(tinyusb
     PRIVATE 
-        $<$<CXX_COMPILER_ID:GNU>:-O0>
+        # TODO: Not sure why this was left here, disabled for now!
+        #$<$<CXX_COMPILER_ID:GNU>:-O0>
 )
 
 target_include_directories( tinyusb
