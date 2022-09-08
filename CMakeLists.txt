@@ -18,26 +18,23 @@ set_property(CACHE TinyUsbVersion PROPERTY STRINGS
     0.8.0
 )
 
-include(FetchContent)
+include(CPM)
 
-FetchContent_Declare(
-    tinyusb
+CPMAddPackage(
+    NAME tinyusb_fetchcontent
     GIT_REPOSITORY https://github.com/hathach/tinyusb.git
     GIT_TAG ${TinyUsbVersion}
     GIT_SHALLOW TRUE 
     GIT_PROGRESS TRUE
     GIT_SUBMODULES  "hw/mcu/microchip"
+    DOWNLOAD_ONLY YES
 )
 
-set(FETCHCONTENT_QUIET FALSE)
-FetchContent_GetProperties(tinyusb)
-if(NOT tinyusb_POPULATED)
-
-    FetchContent_Populate(tinyusb)
-
+if(tinyusb_fetchcontent_ADDED)
     # Inject and use tinyusb.cmake 
-    write_file( ${tinyusb_SOURCE_DIR}/CMakeLists.txt "include(${CMAKE_CURRENT_LIST_DIR}/tinyusb.cmake)" )
+    write_file( ${tinyusb_fetchcontent_SOURCE_DIR}/CMakeLists.txt "include(${CMAKE_CURRENT_LIST_DIR}/tinyusb.cmake)" )
+    file( APPEND ${tinyusb_fetchcontent_SOURCE_DIR}/.git/info/exclude "/CMakeLists.txt")
 
-    add_subdirectory(${tinyusb_SOURCE_DIR} ${tinyusb_BINARY_DIR})
+    add_subdirectory(${tinyusb_fetchcontent_SOURCE_DIR} ${tinyusb_fetchcontent_BINARY_DIR})
 endif()
     
