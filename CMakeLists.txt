@@ -26,7 +26,7 @@ include(CPM)
 
 CPMAddPackage(
     NAME tinyusb
-    GIT_REPOSITORY https://github.com/hathach/tinyusb.git
+    GITHUB_REPOSITORY hathach/tinyusb
     GIT_TAG ${TinyUsbVersion}
     GIT_SHALLOW TRUE 
     GIT_PROGRESS TRUE
