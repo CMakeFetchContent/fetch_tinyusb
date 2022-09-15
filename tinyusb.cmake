@@ -4,6 +4,8 @@ cmake_minimum_required(VERSION 3.18)
 project( tinyusb LANGUAGES  C ASM)
 
 add_library(tinyusb)
+add_library(tinyusb::tinyusb ALIAS tinyusb)
+
 set_target_properties( tinyusb PROPERTIES
     C_STANDARD 11
 )
